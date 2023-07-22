@@ -5,9 +5,12 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
+
 const Nav = () => {
   const { data:session } = useSession();
   const [providers, setproviders] = useState(null);
+
+
 
   const [toggleDropdown, settoggleDropdown] = useState(false)
 
@@ -78,50 +81,51 @@ const Nav = () => {
 
       <div className=" sm:hidden flex relative">
         {session?.user ? (
-          <button className="flex">
+          <div className="flex">
+          <button
+            onClick={() => settoggleDropdown((prev) => !prev)}
+            className="flex items-center"
+          >
             <Image
               src={session?.user.image}
               alt="profile"
               width={40}
               height={40}
               className="rounded-full"
-              onClick={() => settoggleDropdown((prev) => !prev)}
             />
-
-            {toggleDropdown && (
-              <div className="dropdown">
-                <Link
-                  href="/profile"
-                  className="dropdown_link"
-                  onClick={() => settoggleDropdown(false)}
-                >
-                  My Profile
-                </Link>
-
-                <Link
-                  href="/create-idea"
-                  className="dropdown_link"
-                  onClick={() => settoggleDropdown(false)}
-                >
-                  Create Idea
-                </Link>
-
-                <button
-                  type="button"
-                  className="black_btn mt-5 w-full"
-                  onClick={() => {
-                    settoggleDropdown(false);
-                    signOut();
-                  }}
-                >
-                  Sign Out
-                </button>
-
-              </div>
-
-            )}
-
           </button>
+        
+          {toggleDropdown && (
+            <div className="dropdown">
+              <Link
+                href="/profile"
+                className="dropdown_link"
+                onClick={() => settoggleDropdown(false)}
+              >
+                My Profile
+              </Link>
+        
+              <Link
+                href="/create-idea"
+                className="dropdown_link"
+                onClick={() => settoggleDropdown(false)}
+              >
+                Create Idea
+              </Link>
+        
+              <button
+                type="button"
+                className="black_btn mt-5 w-full"
+                onClick={() => {
+                  settoggleDropdown(false);
+                  signOut();
+                }}
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
+        </div>
         ) : (
           <>
             {providers &&
