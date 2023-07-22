@@ -12,11 +12,11 @@ const Nav = () => {
   const [toggleDropdown, settoggleDropdown] = useState(false)
 
   useEffect(() => {
-    const setproviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
       setproviders(response);
     }
-    setproviders();
+    setUpProviders();
   }, [])
 
   return (
@@ -46,7 +46,7 @@ const Nav = () => {
 
             <Link href="/profile">
               <Image
-                src="/assets/images/Deadpool-Logo.svg"
+                src={session?.user.image}
                 alt="profile"
                 width={40}
                 height={40}
@@ -80,7 +80,7 @@ const Nav = () => {
         {session?.user ? (
           <button className="flex">
             <Image
-              src="/assets/images/Deadpool-Logo.svg"
+              src={session?.user.image}
               alt="profile"
               width={40}
               height={40}
