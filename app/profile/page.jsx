@@ -9,6 +9,16 @@ import Profile from "@components/Profile";
 const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  
+
+  useEffect(() => {
+      // Check if the user is not logged in and redirect to the homepage
+      if (!session?.user) {
+        router.push('/');
+      }
+    }, [session, router]);
+
+
 
   const [myPosts, setMyPosts] = useState([]);
 
