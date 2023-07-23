@@ -17,7 +17,7 @@ const CreateIdea = () => {
         }
       }, [session, router]);
 
-    const [submitting, setsubmitting] = useState(false);
+    const [submitting, setIsSubmitting] = useState(false);
     const [post, setpost] = useState({
         idea:'',
         tag:'',
@@ -25,6 +25,27 @@ const CreateIdea = () => {
 
     const createIdea = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("/api/idea/new", {
+                method: "POST",
+                body: JSON.stringify({
+                    idea: post.idea,
+                    userId: session?.user.id,
+                    tag: post.tag,
+                }),
+            });
+
+            if (response.ok) {
+                router.push("/");
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsSubmitting(false);
+        }
+
     }
 
 
