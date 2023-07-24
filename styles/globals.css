@@ -90,6 +90,10 @@
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
+.subhead_text {
+  @apply mt-5 text-4xl font-extrabold leading-[1.25] text-black sm:text-5xl h-28;
+}
+
 .orange_gradient {
   @apply bg-gradient-to-r from-pink-600 via-violet-600 to-orange-500 bg-clip-text text-transparent;
 }

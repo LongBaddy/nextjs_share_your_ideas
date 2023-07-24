@@ -8,9 +8,12 @@ const Home = () => {
 
 
       </h1>
-      <span className="head_text orange_gradient text-center">
+      
+      <span className="subhead_text orange_gradient text-center">
         What you think about this page
       </span>
+
+
 
       <p className="desc text-center">
         Just share your thoughts about this page
