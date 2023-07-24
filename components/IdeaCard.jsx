@@ -58,7 +58,7 @@ const IdeaCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
                 ? "/assets/icons/tick.svg"
                 : "/assets/icons/copy.svg"
             }
-            //there is no tick_icon in the global.css file
+            
             alt={copied === post.idea ? "tick_icon" : "copy_icon"}
             width={12}
             height={12}
