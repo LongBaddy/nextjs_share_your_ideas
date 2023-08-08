@@ -5,7 +5,7 @@ import Provider from '@components/Provider';
 
 export const metadata = {
     title: "IdeaWorld",
-    description: 'Find and Share AI Ideas'
+    description: 'Share Your Idea'
 }
 
 const Rootlayout = ({ children }) => {
